@@ -16,7 +16,6 @@ sources:
       error_after: {count: 300, period: day}
 
     tables:
-
       - name: ADDRESSES
         loaded_at_field: _fivetran_synced
         columns:
@@ -61,11 +60,45 @@ sources:
           - name: _FIVETRAN_DELETED
           - name: _FIVETRAN_SYNCED
 
-      - name: ORDERS_ITEMS
+      - name: ORDER_ITEMS
         loaded_at_field: _fivetran_synced
         columns:
           - name: ORDER_ID
           - name: PRODUCT_ID
           - name: QUANTITY
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+      
+      - name: PRODUCTS
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: PRODUCT_ID
+          - name: PRICE
+          - name: NAME
+          - name: INVENTORY
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+
+      - name: PROMOS
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: PROMO_ID
+          - name: DISCOUNT
+          - name: STATUS
+          - name: _FIVETRAN_DELETED
+          - name: _FIVETRAN_SYNCED
+      
+      - name: USERS
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: USER_ID
+          - name: UPDATED_AT
+          - name: ADDRESS_ID
+          - name: LAST_NAME
+          - name: CREATED_AT
+          - name: PHONE_NUMBER
+          - name: TOTAL_ORDERS
+          - name: FIRST_NAME
+          - name: EMAIL
           - name: _FIVETRAN_DELETED
           - name: _FIVETRAN_SYNCED

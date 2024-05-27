@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: STG_GOOGLE_SHEETS__BUDGET
+    config:
+        contract:
+          enforced: true
+    columns:
+    - name: _row
+    - name: product_id
+      tests:
+        - not_null
+      data_type: text
+      constraints:
+        - type: not_null
+    - name: quantity
+      tests:
+        - not_null
+      data_type: text
+      constraints:
+        - type: not_null
+    - name: month
+    - name: _fivetran_synced
