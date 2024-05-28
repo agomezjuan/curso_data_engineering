@@ -20,6 +20,9 @@ sources:
         loaded_at_field: _fivetran_synced
         columns:
           - name: ADDRESS_ID
+            tests:
+              - unique
+              - not_null                  
           - name: ZIPCODE
           - name: COUNTRY
           - name: ADDRESS

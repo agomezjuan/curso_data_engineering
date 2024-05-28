@@ -16,11 +16,11 @@ renamed_casted as (
 
     select
         product_id,
-        price,
+        price as price_euro,
         name,
         inventory,
-        _fivetran_deleted,
-        _fivetran_synced
+        coalesce(_fivetran_deleted, false) as _fivetran_deleted,
+        convert_timezone('UTC', _fivetran_synced) as date_load
 
     from src_products
 

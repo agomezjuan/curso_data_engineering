@@ -2,9 +2,9 @@ version: 2
 
 models:
   - name: STG_SQL_SERVER_DBO__ADDRESSES
-    # config:
-    #   contract:
-    #     enforced: true
+    config:
+      contract:
+        enforced: true
     description: >
       Data about all addresses.
     columns:
@@ -97,3 +97,9 @@ models:
       - name: EMAIL
       - name: _FIVETRAN_DELETED
       - name: DATE_LOAD
+
+  - name: STG_SQL_SERVER_DBO_STATUSES
+    description: Promo status
+    columns:
+      - name: status_id
+      - name: description

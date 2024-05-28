@@ -28,8 +28,8 @@ renamed_casted as (
         delivered_at,
         tracking_id,
         status,
-        _fivetran_deleted,
-        _fivetran_synced as date_load
+        coalesce(_fivetran_deleted, false) as _fivetran_deleted,
+        convert_timezone('UTC', _fivetran_synced) as date_load
 
     from src_orders
 
