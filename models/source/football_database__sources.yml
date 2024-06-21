@@ -1,0 +1,216 @@
+version: 2
+
+sources:
+
+  - name: football_database # name of the source 
+    schema: football_database # this is the schema our raw data lives in
+    database: ALUMNO24_DEV_BRONZE_DB # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    # freshness:
+    #   warn_after: {count: 24, period: hour}
+    #   error_after: {count: 48, period: hour}
+
+    tables:
+
+      - name: appearances
+        description: "A table listing all appearances in the football database"
+        columns:
+          - name: gameID
+            description: "The ID of the game"
+          - name: playerID
+            description: "The ID of the player"
+            tests:
+              - unique
+          - name: goals
+            description: "The number of goals scored by the player"
+          - name: ownGoals
+            description: "The number of own goals scored by the player"
+          - name: shots
+            description: "The number of shots taken by the player"
+          - name: xGoals
+            description: "The expected number of goals scored by the player"
+          - name: xGoalsChain
+            description: "The expected number of goals scored by the player"
+          - name: xGoalsBuildup
+            description: "The expected number of goals scored by the player"
+          - name: assists
+            description: "The number of assists by the player"
+          - name: keyPasses
+            description: "The number of key passes by the player"
+          - name: xAssists
+            description: "The expected number of assists by the player"
+          - name: position
+            description: "The position of the player"
+          - name: positionOrder
+            description: "The order of the position of the player"
+          - name: yellowCard
+            description: "The number of yellow cards received by the player"
+          - name: redCard
+            description: "The number of red cards received by the player"
+          - name: time
+            description: "The time played by the player"
+          - name: substituteIn
+            description: "The time the player was substituted in"
+          - name: substituteOut
+            description: "The time the player was substituted out"
+          - name: leagueID
+            description: "The ID of the league"
+      - name: games
+        description: "A table listing all games in the football database"
+        columns:
+          - name: gameID
+            description: "The ID of the game"
+          - name: leagueID
+            description: "The ID of the league"
+          - name: season
+            description: "The season of the game"
+          - name: date
+            description: "The date of the game"
+          - name: homeTeamID
+            description: "The ID of the home team"
+          - name: awayTeamID
+            description: "The ID of the away team"
+          - name: homeGoals
+            description: "The number of goals scored by the home team"
+          - name: awayGoals
+            description: "The number of goals scored by the away team"
+          - name: homeProbability
+            description: "The probability of the home team winning"
+          - name: drawProbability
+            description: "The probability of a draw"
+          - name: awayProbability
+            description: "The probability of the away team winning"
+          - name: homeGoalsHalfTime
+            description: "The number of goals scored by the home team at half time"
+          - name: awayGoalsHalfTime
+            description: "The number of goals scored by the away team at half time"
+          - name: B365H
+            description: "B365 (Bet365) odds of home team winning"
+          - name: B365D
+            description: "B365 (Bet365) odds of a draw"
+          - name: B365A
+            description: "B365 (Bet365) odds of away team winning"
+          - name: BWH
+            description: "BW (Betway) odds of home team winning"
+          - name: BWD
+            description: "BW (Betway) odds of a draw"
+          - name: BWA
+            description:  "BW (Betway) odds of away team winning"
+          - name: IWH
+            description: "IW (Interwetten) odds of home team winning"
+          - name: IWD 
+            description: "IW (Interwetten) odds of a draw"
+          - name: IWA
+            description: "IW (Interwetten) odds of away team winning"
+          - name: PSH
+            description: "PS (Pinnacle Sports) odds of home team winning"
+          - name: PSD
+            description: "PS (Pinnacle Sports) odds of a draw"
+          - name: PSA
+            description: "PS (Pinnacle Sports) odds of away team winning"
+          - name: WHH
+            description: "WH (William Hill) odds of home team winning"
+          - name: WHD
+            description: "WH (William Hill) odds of a draw"
+          - name: WHA
+            description: "WH (William Hill) odds of away team winning"
+          - name: VCH
+            description: "VC (VC Bet) odds of home team winning"
+          - name: VCD
+            description: "VC (VC Bet) odds of a draw"
+          - name: VCA
+            description: "VC (VC Bet) odds of away team winning"
+          - name: PSCH
+            description: "PS (Pinnacle Sports Closing Odds) odds of home team winning"
+          - name: PSCD
+            description: "PS (Pinnacle Sports Closing Odds) odds of a draw"
+          - name: PSCA
+            description: "PS (Pinnacle Sports Closing Odds) odds of away team winning"
+      - name: leagues
+        description: "A table listing all leagues in the football database"
+        columns:
+          - name: leagueID
+            description: "The ID of the league"
+          - name: name
+            description: "The name of the league"
+          - name: understatNotation
+            description: "The understat notation of the league"
+      - name: players
+        description: "A table listing all players in the football database"
+        columns:
+          - name: playerID
+            description: "The ID of the player"
+          - name: name
+            description: "The name of the player"
+      - name: teams
+        description: "A table listing all teams in the football database"
+        columns:
+          - name: teamID
+            description: "The ID of the team"
+          - name: name
+            description: "The name of the team"
+      - name: shots
+        description: "A table listing all shots in the football database"
+        columns:
+          - name: gameID
+            description: "The ID of the game"
+          - name: shooterID
+            description: "The ID of the player who took the shot"
+          - name: assisterID
+            description: "The ID of the player who assisted the shot"
+          - name: minute
+            description: "The minute the shot was taken"
+          - name: situation
+            description: "The situation of the shot"
+          - name: lastAction
+            description: "The last action before the shot"
+          - name: shotType
+            description: "The type of shot"
+          - name: shotResult
+            description: "The result of the shot"
+          - name: xGoal
+            description: "The estimated probability of the shot resulting in a goal"
+          - name: positionX
+            description: "The x position of the shot"
+          - name: positionY
+            description: "The y position of the shot"
+      - name: teamstats
+        description: "A table listing all team stats in the football database"
+        columns:
+          - name: gameID
+            description: "The ID of the game"
+          - name: teamID
+            description: "The ID of the team"
+          - name: season
+            description: "The season of the game"
+          - name: date
+            description: "The date of the game"
+          - name: location
+            description: "The location of the game"
+          - name: goals
+            description: "The number of goals scored by the team"
+          - name: xGoals
+            description: "The expected number of goals scored by the team"
+          - name: shots
+            description: "The number of shots taken by the team"
+          - name: shotsOnTarget
+            description: "The number of shots on target taken by the team"
+          - name: deep
+            description: "The number of deep completions by the team"
+          - name: ppda
+            description: "The passes per defensive action by the team"
+          - name: fouls
+            description: "The number of fouls committed by the team"
+          - name: corners
+            description: "The number of corners taken by the team"
+          - name: yellowCards
+            description: "The number of yellow cards received by the team"
+          - name: redCards
+            description: "The number of red cards received by the team"
+          - name: result
+            description: "The result of the game"
