@@ -15,8 +15,10 @@ renamed_casted as (
     select
         _row,
         quantity,
-        month,
+        month as date,
+        monthname(month) as month,
         product_id,
+        null as _fivetran_deleted,
         _fivetran_synced as date_load
 
     from src_budget

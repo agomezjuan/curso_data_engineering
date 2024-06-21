@@ -1,7 +1,7 @@
-{{
-  config(
-    materialized='view'
-  )
+{{ 
+    config(
+      materialized='incremental'
+    ) 
 }}
 
 with 

@@ -98,8 +98,14 @@ models:
       - name: _FIVETRAN_DELETED
       - name: DATE_LOAD
 
-  - name: STG_SQL_SERVER_DBO_STATUSES
+  - name: STG_SQL_SERVER_DBO_PROMO_STATUSES
     description: Promo status
     columns:
       - name: status_id
+      - name: description
+  
+  - name: STG_SQL_SERVER_DBO_ORDER_STATUSES
+    description: Status of an order
+    columns:
+      - name: order_status_id
       - name: description
