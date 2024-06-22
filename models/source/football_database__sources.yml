@@ -22,10 +22,13 @@ sources:
         columns:
           - name: gameID
             description: "The ID of the game"
+            tests:
+              - not_null
           - name: playerID
             description: "The ID of the player"
             tests:
               - unique
+              - not_null
           - name: goals
             description: "The number of goals scored by the player"
           - name: ownGoals
@@ -60,21 +63,32 @@ sources:
             description: "The time the player was substituted out"
           - name: leagueID
             description: "The ID of the league"
+            tests:
+              - not_null
       - name: games
         description: "A table listing all games in the football database"
         columns:
           - name: gameID
             description: "The ID of the game"
+            tests:
+              - not_null
+              - unique
           - name: leagueID
             description: "The ID of the league"
+            tests:
+              - not_null
           - name: season
             description: "The season of the game"
           - name: date
             description: "The date of the game"
           - name: homeTeamID
             description: "The ID of the home team"
+            tests:
+              - not_null
           - name: awayTeamID
             description: "The ID of the away team"
+            tests:
+              - not_null
           - name: homeGoals
             description: "The number of goals scored by the home team"
           - name: awayGoals
@@ -136,6 +150,9 @@ sources:
         columns:
           - name: leagueID
             description: "The ID of the league"
+            tests:
+              - not_null
+              - unique
           - name: name
             description: "The name of the league"
           - name: understatNotation
@@ -145,6 +162,9 @@ sources:
         columns:
           - name: playerID
             description: "The ID of the player"
+            tests:
+              - not_null
+              - unique
           - name: name
             description: "The name of the player"
       - name: teams
@@ -152,6 +172,9 @@ sources:
         columns:
           - name: teamID
             description: "The ID of the team"
+            tests:
+              - not_null
+              - unique
           - name: name
             description: "The name of the team"
       - name: shots
@@ -159,6 +182,8 @@ sources:
         columns:
           - name: gameID
             description: "The ID of the game"
+            tests:
+              - not_null
           - name: shooterID
             description: "The ID of the player who took the shot"
           - name: assisterID
@@ -184,8 +209,12 @@ sources:
         columns:
           - name: gameID
             description: "The ID of the game"
+            tests:
+              - not_null
           - name: teamID
             description: "The ID of the team"
+            tests:
+              - not_null
           - name: season
             description: "The season of the game"
           - name: date
