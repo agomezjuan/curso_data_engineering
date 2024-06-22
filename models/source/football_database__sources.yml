@@ -24,11 +24,17 @@ sources:
             description: "The ID of the game"
             tests:
               - not_null
+              - relationships:
+                    to: ref('games')
+                    field: gameID
           - name: playerID
             description: "The ID of the player"
             tests:
               - unique
               - not_null
+              - relationships:
+                  to: ref('players')
+                  field: playerID
           - name: goals
             description: "The number of goals scored by the player"
           - name: ownGoals
@@ -77,6 +83,9 @@ sources:
             description: "The ID of the league"
             tests:
               - not_null
+              - relationships:
+                  to: ref('leagues')
+                  field: leagueID
           - name: season
             description: "The season of the game"
           - name: date
@@ -85,10 +94,16 @@ sources:
             description: "The ID of the home team"
             tests:
               - not_null
+              - relationships:
+                  to: ref('teams')
+                  field: teamID
           - name: awayTeamID
             description: "The ID of the away team"
             tests:
               - not_null
+              - relationships:
+                  to: ref('teams')
+                  field: teamID
           - name: homeGoals
             description: "The number of goals scored by the home team"
           - name: awayGoals
@@ -184,10 +199,23 @@ sources:
             description: "The ID of the game"
             tests:
               - not_null
+              - relationships:
+                  to: ref('games')
+                  field: gameID
           - name: shooterID
             description: "The ID of the player who took the shot"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('players')
+                  field: playerID
           - name: assisterID
             description: "The ID of the player who assisted the shot"
+            tests:
+              - not_null
+              - relationships:
+                  to: ref('players')
+                  field: playerID
           - name: minute
             description: "The minute the shot was taken"
           - name: situation
@@ -211,10 +239,16 @@ sources:
             description: "The ID of the game"
             tests:
               - not_null
+              - relationships:
+                  to: ref('games')
+                  field: gameID
           - name: teamID
             description: "The ID of the team"
             tests:
               - not_null
+              - relationships:
+                  to: ref('teams')
+                  field: teamID
           - name: season
             description: "The season of the game"
           - name: date
